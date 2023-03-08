@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "management-event-3fb28": {
+      "hosting": {
+        "EventsManage": [
+          "management-event-3fb28"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "management-event-3fb28"
+  }
+}
