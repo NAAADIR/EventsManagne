@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+
+interface Evenement {
+  date: string;
+  description: string;
+  photos: string;
+  typeEvenement: string;
+}
 
 @Component({
   selector: 'app-visiteur',
@@ -8,13 +15,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./visiteur.component.css']
 })
 export class VisiteurComponent {
-  evenementsRef: AngularFireList<any>;
-  evenements: Observable<any[]>;
+  evenementsCollection: AngularFirestoreCollection<Evenement>;
+  evenements: Observable<Evenement[]>;
 
-  constructor(private db: AngularFireDatabase) {
-    this.evenementsRef = db.list('evenements');
-    this.evenements = this.evenementsRef.valueChanges();
+  constructor(private afs: AngularFirestore) {
+    this.evenementsCollection = afs.collection<Evenement>('evenements');
+    this.evenements = this.evenementsCollection.valueChanges();
   }
+
 
   participer(evenement: any) {
     // Ajouter le visiteur à la liste des participants

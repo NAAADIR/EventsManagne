@@ -12,12 +12,13 @@ import { OrganisateurComponent } from './organisateur/organisateur.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { VisiteurComponent } from './visiteur/visiteur.component';
-
-const routes: Routes = [
-  { path: 'organisateur', component: OrganisateurComponent },
-  { path: 'visiteur', component: VisiteurComponent },
-];
-
+import { HttpClientModule } from '@angular/common/http';
+import {
+  NbAuthModule,
+  NbDummyAuthStrategy
+} from '@nebular/auth';
+import { NbIconModule, NbLayoutModule, NbThemeModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,20 @@ const routes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule,
+    NbThemeModule.forRoot({ name: 'dark' }),
+    NbLayoutModule,
+    NbIconModule,
+    NbEvaIconsModule,
+    HttpClientModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbDummyAuthStrategy.setup({
+          name: 'email',
+        }),
+      ],
+      forms: {},
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
