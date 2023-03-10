@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { OrganisateurComponent } from './organisateur/organisateur.component';
 import { FormsModule } from '@angular/forms';
@@ -34,7 +34,7 @@ const routes: Routes = [
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]

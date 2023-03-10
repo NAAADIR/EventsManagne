@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 
 @Component({
@@ -14,17 +15,17 @@ export class OrganisateurComponent {
   date: Date = new Date();
   message: string = '';
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFirestore) { }
 
   creerEvenement() {
     const evenement = {
       typeEvenement: this.typeEvenement,
       description: this.description,
       photos: this.photos,
-      date: this.date.getTime(),
+      date: this.date,
     };
 
-    this.db.list('evenements').push(evenement);
+    this.db.collection('evenements').add(evenement);
     this.message = 'L\'événement a été créé avec succès.';
   }
 }
