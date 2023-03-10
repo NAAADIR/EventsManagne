@@ -10,7 +10,6 @@ interface Evenement {
   description: string;
   photos: string;
   typeEvenement: string;
-
 }
 
 @Component({

@@ -1,44 +1,72 @@
-.container {
-    margin: 20px;
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
 }
 
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.event-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
 }
 
-.form-group {
-    margin-bottom: 20px;
+.event-card:hover {
+    transform: translateY(-5px);
 }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="text"],
-textarea,
-input[type="date"] {
+.event-card__image {
+    height: 150px;
+    object-fit: cover;
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    margin-top: 5px;
+}
+
+.event-card__details {
+    padding: 20px;
+}
+
+.event-card__title {
+    font-size: 1.2rem;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 10px 20px;
-    cursor: pointer;
+.event-card__description {
+    margin-bottom: 10px;
 }
 
-button[type="submit"]:hover {
-    background-color: #0069d9;
+.event-card__date {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.event-card__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.event-card__button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.event-card__button:hover {
+    background-color: #0062cc;
+}
+
+.event-card__button--delete {
+    background-color: #dc3545;
+}
+
+.event-card__button--delete:hover {
+    background-color: #c82333;
 }
