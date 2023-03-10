@@ -8,18 +8,12 @@
     transition: transform 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.card-title {
+    color: black;
 }
 
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+.card-text {
+    color: black;
 }
 
 .btn-primary:hover {

@@ -332,11 +332,9 @@
 
 <!-- Toolbar -->
 
-
-<nav class="navbar">
-  <a class="a" routerLink="/">Accueil</a>
-  <a class="a" routerLink="/organisateur">Organisateur</a>
+<nav class="navbar" *ngIf="authService.isAuthenticated() | async">
+  <a class="a" *ngIf="isAdmin" routerLink="/organisateur">Organisateur</a>
   <a class="a" routerLink="/visiteur">Visiteur</a>
+  <a class="a" routerLink="/auth/logout">Déconnecter</a>
 </nav>
-
 <router-outlet></router-outlet>
