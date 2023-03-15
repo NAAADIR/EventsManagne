@@ -9,19 +9,20 @@
                 <h2>Créer un événement</h2>
                 <div class="form-group">
                     <label>Type d'événement</label>
-                    <input class="form-control" [(ngModel)]="typeEvenement" name="typeEvenement" type="text">
+                    <input class="form-control" [(ngModel)]="typeEvenement" name="typeEvenement" type="text" required>
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" [(ngModel)]="description" name="description" rows="3"></textarea>
+                    <textarea class="form-control" [(ngModel)]="description" name="description" rows="3"
+                        required></textarea>
                 </div>
                 <div class="form-group">
                     <label>Photos</label>
-                    <input class="form-control" [(ngModel)]="photos" name="photos" type="text">
+                    <input class="form-control" [(ngModel)]="photos" name="photos" type="text" required>
                 </div>
                 <div class="form-group">
                     <label>Date</label>
-                    <input class="form-control" [(ngModel)]="date" name="date" type="date">
+                    <input class="form-control" [(ngModel)]="date" name="date" type="date" required>
                 </div>
                 <button class="btn btn-primary" (click)="creerEvenement()">Créer</button>
                 <p>{{message}}</p>
@@ -52,20 +53,22 @@
                                 <label>Date</label>
                                 <input class="form-control" [(ngModel)]="evenementModifie.date" name="date" type="date">
                             </div>
-                            <button class="btn btn-primary" (click)="enregistrerModification()">Enregistrer</button>
+                            <button class="btn btn-primary"
+                                (click)="enregistrerModification(evenement.typeEvenement)">Enregistrer</button>
                             <button class="btn btn-secondary" (click)="annulerModification()">Annuler</button>
                         </form>
                     </div>
                     <div *ngIf="evenementSelectionne !== evenement">
                         <div class="d-flex justify-content-between">
                             <h5 class="mb-1">{{evenement.typeEvenement}}</h5>
-                            <small>{{evenement.date.toDate() | date:'medium'}}</small>
+                            <small>{{ evenement.date }}</small>
                         </div>
                         <p class="mb-1">{{evenement.description}}</p>
                         <small>{{evenement.photos}}</small>
-                        <div>
+                        <div style="padding: 10px">
                             <button class="btn btn-primary" (click)="modifierEvenement(evenement)">Modifier</button>
-                            <button class="btn btn-danger" (click)="supprimerEvenement(evenement)">Supprimer</button>
+                            <button class="btn btn-danger"
+                                (click)="supprimerEvenement(evenement.typeEvenement)">Supprimer</button>
                         </div>
                     </div>
                 </li>

@@ -1,72 +1,107 @@
-.event-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 20px;
+.container {
+    margin-top: 50px;
 }
 
-.event-card {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-}
-
-.event-card:hover {
-    transform: translateY(-5px);
-}
-
-.event-card__image {
-    height: 150px;
-    object-fit: cover;
-    width: 100%;
-}
-
-.event-card__details {
+.form {
+    background-color: #f9f9f9;
     padding: 20px;
+    border-radius: 5px;
 }
 
-.event-card__title {
-    font-size: 1.2rem;
+.form label {
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-.event-card__description {
-    margin-bottom: 10px;
-}
-
-.event-card__date {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-.event-card__buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.event-card__button {
-    background-color: #007bff;
+.form input[type=text],
+.form textarea,
+.form input[type=date] {
     border: none;
-    border-radius: 3px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.form input[type=submit],
+.form button {
+    background-color: #007bff;
     color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9rem;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease-in-out;
 }
 
-.event-card__button:hover {
-    background-color: #0062cc;
+.form input[type=submit]:hover,
+.form button:hover {
+    background-color: #0069d9;
 }
 
-.event-card__button--delete {
-    background-color: #dc3545;
+.list-group-item {
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
-.event-card__button--delete:hover {
-    background-color: #c82333;
+.list-group-item h5 {
+    font-weight: bold;
+}
+
+.list-group-item p,
+.list-group-item small {
+    margin-bottom: 5px;
+}
+
+.list-group-item button {
+    margin-right: 10px;
+}
+
+.list-group-item form {
+    background-color: #f9f9f9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.list-group-item form label {
+    font-weight: bold;
+}
+
+.list-group-item form input[type=text],
+.list-group-item form textarea,
+.list-group-item form input[type=date] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.list-group-item form button {
+    margin-right: 10px;
+}
+
+.list-group-item form button[type=submit] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.list-group-item form button[type=submit]:hover {
+    background-color: #0069d9;
+}
+
+.list-group-item form button[type=button] {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.list-group-item form button[type=button]:hover {
+    background-color: #5a6268;
 }
