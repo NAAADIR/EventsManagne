@@ -15,36 +15,111 @@ interface Evenement {
   templateUrl: './organisateur.component.html',
   styleUrls: ['./organisateur.component.css']
 })
-export class OrganisateurComponent {
-  typeEvenement: string = "";
-  description: string = "";
-  photos: string = "";
+export class OrganisateurComponent implements OnInit {
+
+  evenementsCollection: AngularFirestoreCollection<any> | null = null;
+  evenements: Observable<any[]> | null = null;
+
+  typeEvenement: string = '';
+  description: string = '';
+  photos: string = '';
   date: Date = new Date();
   message: string = '';
-  evenementsCollection: AngularFirestoreCollection<Evenement>;
-  evenements: Observable<Evenement[]>;
   id: string = "";
 
-  constructor(private afs: AngularFirestore, private router: ActivatedRoute) {
-    this.evenementsCollection = afs.collection<Evenement>('evenements');
+  evenementSelectionne: any = null;
+  evenementModifie: any = null;
+
+  constructor(public db: AngularFirestore) { }
+
+  ngOnInit() {
+    this.evenementsCollection = this.db.collection('evenements');
     this.evenements = this.evenementsCollection.valueChanges();
-    this.id = this.router.snapshot.params['id'];
-   }
+  }
 
   creerEvenement() {
     const evenement = {
       typeEvenement: this.typeEvenement,
       description: this.description,
       photos: this.photos,
-      date: this.date,
+      date: new Date(this.date),
     };
 
-    this.afs.collection('evenements').add(evenement);
-    this.message = 'L\'événement a été créé avec succès.';
-  }
-  modifierEvenement() {
+    if (!this.typeEvenement || !this.description || !this.date || !this.photos) {
+      this.message = 'Veuillez remplir tous les champs obligatoires.';
+      return;
+    }
 
-    
-    this.message = 'L\'événement a été créé avec succès.';
+    if (this.evenementsCollection) {
+      this.evenementsCollection.add(evenement);
+      this.message = 'L\'événement a été créé avec succès.';
+      this.resetFormulaire();
+    } else {
+      console.error("Erreur dans la requête.");
+    }
   }
+
+  modifierEvenement(evenement: any) {
+    this.evenementSelectionne = evenement;
+    this.evenementModifie = {
+      typeEvenement: evenement.typeEvenement,
+      description: evenement.description,
+      photos: evenement.photos,
+      date: evenement.date,
+    };
+  }
+
+  enregistrerModification(typeEvenement: string) {
+    if (this.evenementsCollection && this.evenementModifie) {
+      this.evenementsCollection.ref.where("typeEvenement", "==", typeEvenement)
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            doc.ref.update(this.evenementModifie);
+          });
+          this.evenementSelectionne = null;
+          this.evenementModifie = null;
+          this.message = `L'évenement a été modifié avec succès.`;
+        })
+        .catch(error => {
+          console.error("Erreur lors de la modification des événements :", error);
+        });
+    } else {
+      console.error("Erreur dans la requête.");
+    }
+  }
+
+
+  annulerModification() {
+    this.evenementSelectionne = null;
+    this.evenementModifie = null;
+  }
+
+  supprimerEvenement(typeEvenement: string) {
+    if (this.evenementsCollection) {
+      this.evenementsCollection.ref.where("typeEvenement", "==", typeEvenement)
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            doc.ref.delete();
+          });
+          this.message = `L'évenement a été supprimé avec succès..`;
+        })
+        .catch(error => {
+          console.error("Erreur lors de la suppression des événements :", error);
+        });
+    } else {
+      console.error("Erreur dans la requête.");
+    }
+  }
+
+
+
+  resetFormulaire() {
+    this.typeEvenement = '';
+    this.description = '';
+    this.photos = '';
+    this.date = new Date();
+  }
+
 }
