@@ -10,10 +10,14 @@ import {
 } from '@nebular/auth';
 import { OrganisateurComponent } from './organisateur/organisateur.component';
 import { VisiteurComponent } from './visiteur/visiteur.component';
+import { AddevenementComponent } from './addevenement/addevenement.component';
+import { UpdateevenementComponent } from './updateevenement/updateevenement.component';
 
 const routes: Routes = [
   { path: 'organisateur', component: OrganisateurComponent },
   { path: 'visiteur', component: VisiteurComponent },
+  { path: 'addevenement', component: AddevenementComponent },
+  { path: 'updateevenement', component: UpdateevenementComponent },
   {
     path: 'auth',
     component: NbAuthComponent,

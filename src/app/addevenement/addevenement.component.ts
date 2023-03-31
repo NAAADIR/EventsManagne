@@ -4,18 +4,19 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from "@angular/router";
 
 interface Evenement {
-  id:string;
   date:string;
   description : string;
   photos:string;
   typeEvenement: string;
 }
+
 @Component({
-  selector: 'app-organisateur',
-  templateUrl: './organisateur.component.html',
-  styleUrls: ['./organisateur.component.css']
+  selector: 'app-addevenement',
+  templateUrl: './addevenement.component.html',
+  styleUrls: ['./addevenement.component.css']
 })
-export class OrganisateurComponent {
+export class AddevenementComponent implements OnInit {
+
   typeEvenement: string = "";
   description: string = "";
   photos: string = "";
@@ -23,13 +24,15 @@ export class OrganisateurComponent {
   message: string = '';
   evenementsCollection: AngularFirestoreCollection<Evenement>;
   evenements: Observable<Evenement[]>;
-  id: string = "";
-
-  constructor(private afs: AngularFirestore, private router: ActivatedRoute) {
+  constructor(private afs: AngularFirestore) { 
     this.evenementsCollection = afs.collection<Evenement>('evenements');
     this.evenements = this.evenementsCollection.valueChanges();
-    this.id = this.router.snapshot.params['id'];
-   }
+
+
+  }
+
+  ngOnInit(): void {
+  }
 
   creerEvenement() {
     const evenement = {
@@ -40,11 +43,6 @@ export class OrganisateurComponent {
     };
 
     this.afs.collection('evenements').add(evenement);
-    this.message = 'L\'événement a été créé avec succès.';
-  }
-  modifierEvenement() {
-
-    
     this.message = 'L\'événement a été créé avec succès.';
   }
 }

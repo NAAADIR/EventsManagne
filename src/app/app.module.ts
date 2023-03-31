@@ -9,6 +9,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { OrganisateurComponent } from './organisateur/organisateur.component';
+
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { VisiteurComponent } from './visiteur/visiteur.component';
@@ -19,12 +20,16 @@ import {
 } from '@nebular/auth';
 import { NbIconModule, NbLayoutModule, NbThemeModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { AddevenementComponent } from './addevenement/addevenement.component';
+import { UpdateevenementComponent } from './updateevenement/updateevenement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrganisateurComponent,
-    VisiteurComponent
+    VisiteurComponent,
+    AddevenementComponent,
+    UpdateevenementComponent
   ],
   imports: [
     BrowserModule,
