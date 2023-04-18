@@ -5,6 +5,7 @@
 h1 {
     font-size: 32px;
     text-align: center;
+    color: #007bff
 }
 
 ul {
@@ -52,11 +53,7 @@ body {
 }
 
 
-h1 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 30px;
-}
+
 
 .card {
   background-color: #fff;

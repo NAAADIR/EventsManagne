@@ -7,6 +7,7 @@ import { NbAuthService } from '@nebular/auth';
 
 
 interface Evenement {
+  id : string
   date:string;
   description : string;
   photos: string;
@@ -24,7 +25,7 @@ export class VisiteurComponent {
   evenementsCollection: AngularFirestoreCollection<Evenement>;
   evenements: Observable<Evenement[]>;
   selectedDate: Date = new Date();
-
+  userId: string = "";
   constructor(private afs: AngularFirestore, public authService: NbAuthService) {
     this.evenementsCollection = afs.collection<Evenement>('evenements');
     this.evenements = this.evenementsCollection.valueChanges();
@@ -85,6 +86,20 @@ export class VisiteurComponent {
       });
     });
   }
+
+getEvenementsParticipe () {
+  this.authService.getToken().subscribe((token) => {
+    const userId = token.getPayload().sub;
+    if (!userId) {
+      console.error("Impossible de récupérer l'identifiant de l'utilisateur connecté");
+      return;
+    }
+    this.evenements = this.afs.collection<Evenement>('evenements', ref =>
+      ref.where('participants', 'array-contains', userId)
+    ).valueChanges({idField:'id'});
+    
+      });
+}
   
   
   
