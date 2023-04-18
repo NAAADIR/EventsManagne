@@ -12,7 +12,7 @@
                     <h5 class="card-title">{{ evenement.typeEvenement }}</h5>
                     <p class="card-text">{{ evenement.description }}</p>
                     <p class="card-text"><small class="text-muted">{{ evenement.date }}</small></p>
-                    <button class="btn btn-primary" (click)="participer(evenement)">Participer</button>
+                    <button class="btn btn-primary" (click)="participer(evenement.typeEvenement)">Participer</button>
                 </div>
             </div>
         </div>
