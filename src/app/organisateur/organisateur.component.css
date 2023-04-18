@@ -1,107 +1,52 @@
+/* Centre le formulaire dans la page */
 .container {
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
+/* Donne un fond blanc et une bordure arrondie au formulaire */
 .form {
-    background-color: #f9f9f9;
-    padding: 20px;
+    background-color: #fff;
     border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form label {
+/* Ajoute un espacement entre les éléments du formulaire */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style les labels */
+label {
     font-weight: bold;
 }
 
-.form input[type=text],
-.form textarea,
-.form input[type=date] {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
+/* Style les boutons */
+.btn {
+    margin-right: 10px;
 }
 
-.form input[type=submit],
-.form button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.form input[type=submit]:hover,
-.form button:hover {
-    background-color: #0069d9;
-}
-
+/* Style la liste des événements */
 .list-group-item {
     margin-bottom: 20px;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.list-group-item h5 {
-    font-weight: bold;
-}
-
-.list-group-item p,
-.list-group-item small {
+/* Style les titres des événements */
+h5 {
     margin-bottom: 5px;
 }
 
-.list-group-item button {
+/* Style les dates des événements */
+small {
+    font-style: italic;
+}
+
+/* Donne un espacement aux boutons "Modifier" et "Supprimer" */
+button {
     margin-right: 10px;
-}
-
-.list-group-item form {
-    background-color: #f9f9f9;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.list-group-item form label {
-    font-weight: bold;
-}
-
-.list-group-item form input[type=text],
-.list-group-item form textarea,
-.list-group-item form input[type=date] {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.list-group-item form button {
-    margin-right: 10px;
-}
-
-.list-group-item form button[type=submit] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.list-group-item form button[type=submit]:hover {
-    background-color: #0069d9;
-}
-
-.list-group-item form button[type=button] {
-    background-color: #6c757d;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.list-group-item form button[type=button]:hover {
-    background-color: #5a6268;
 }
