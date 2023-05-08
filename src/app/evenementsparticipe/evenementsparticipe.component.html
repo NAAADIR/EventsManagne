@@ -2,8 +2,8 @@
     <br>
     <br>
 <div class="container">
-    <h1>Derniers événements</h1>
-    <ngx-datepicker [(ngModel)]="selectedDate" (ngModelChange)="getEvenements()"></ngx-datepicker>
+    <h1>Mes événements</h1>
+    <ngx-datepicker [(ngModel)]="userId" (ngModelChange)="getEvenementsParticipe()"></ngx-datepicker>
     <div class="row">
         <div class="col-md-4 mb-3" *ngFor="let evenement of evenements | async">
             <div class="card">
@@ -12,11 +12,9 @@
                     <h5 class="card-title">{{ evenement.typeEvenement }}</h5>
                     <p class="card-text">{{ evenement.description }}</p>
                     <p class="card-text"><small class="text-muted">{{ evenement.date }}</small></p>
-                    <button class="btn btn-primary" (click)="participer(evenement.typeEvenement)">Participer</button>
                 </div>
             </div>
         </div>
     </div>
-    
 </div>
 </body>

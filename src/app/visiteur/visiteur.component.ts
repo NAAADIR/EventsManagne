@@ -86,20 +86,6 @@ export class VisiteurComponent {
       });
     });
   }
-
-getEvenementsParticipe () {
-  this.authService.getToken().subscribe((token) => {
-    const userId = token.getPayload().sub;
-    if (!userId) {
-      console.error("Impossible de récupérer l'identifiant de l'utilisateur connecté");
-      return;
-    }
-    this.evenements = this.afs.collection<Evenement>('evenements', ref =>
-      ref.where('participants', 'array-contains', userId)
-    ).valueChanges({idField:'id'});
-    
-      });
-}
   
   
   

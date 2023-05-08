@@ -13,6 +13,7 @@ import { OrganisateurComponent } from './organisateur/organisateur.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { VisiteurComponent } from './visiteur/visiteur.component';
+import { EvenementsParticipeComponent } from './evenementsparticipe/evenementsparticipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import {
   NbAuthModule,
@@ -30,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     OrganisateurComponent,
     VisiteurComponent,
+    EvenementsParticipeComponent,
     AddevenementComponent,
     UpdateevenementComponent
   ],

@@ -10,6 +10,7 @@ import {
 } from '@nebular/auth';
 import { OrganisateurComponent } from './organisateur/organisateur.component';
 import { VisiteurComponent } from './visiteur/visiteur.component';
+import { EvenementsParticipeComponent } from './evenementsparticipe/evenementsparticipe.component';
 import { AddevenementComponent } from './addevenement/addevenement.component';
 import { UpdateevenementComponent } from './updateevenement/updateevenement.component';
 
@@ -20,6 +21,7 @@ export function onLogout() {
 const routes: Routes = [
   { path: 'organisateur', component: OrganisateurComponent },
   { path: 'visiteur', component: VisiteurComponent },
+  { path: 'mesevenements', component: EvenementsParticipeComponent },
   { path: 'addevenement', component: AddevenementComponent },
   { path: 'updateevenement', component: UpdateevenementComponent },
   {
